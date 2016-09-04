@@ -16,7 +16,17 @@ function print(text) {
 }
 
 function processCmds(cmd) {
-	if (cmd.toLowerCase().startsWith("nim")) {location.href="https://www.youtube.com/watch?v=acoZukU67qE";return}
+	
+	//Spooky Secret EasterEggs
+	var temp = cmd.toLowerCase();
+	if(temp.startsWith("nim")) {
+		location.href = "https://www.youtube.com/watch?v=acoZukU67qE";
+		return;
+	} else if (temp.startsWith("medicine")) {
+		location.href = "https://www.youtube.com/watch?v=RSALdVyTrOc";
+		return;
+	}
+	
 	var split = cmd.split(" ");
 	split[0] = split[0].toLowerCase();
 	for (var i = 0; i < commands.length; i++) {
