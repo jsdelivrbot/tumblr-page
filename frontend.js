@@ -35,6 +35,7 @@ window.onkeydown = function(e) {
 		ctrlDown = true;
 	} else if (e.keyCode == 38) { //Up Arrow
 		currenttext.innerHTML = lastcommand;
+		e.preventDefault();
 	}
 }
 window.onkeyup = function(e) {
