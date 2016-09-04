@@ -35,5 +35,15 @@ var commands = [ //Can't be "required" or window.open works funny.. Might sort i
 						}
 					},
 					"help": "Run a JS string"
+				},
+								{
+					"name": "load",
+					"func": function(s) {
+						s = s.join(" ").trim()
+						var script = document.createElement("script");
+						script.src = s;
+						document.head.appendChild(script);
+					},
+					"help": "Load remote javascript file"
 				}
 			];
