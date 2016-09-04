@@ -36,7 +36,7 @@ var commands = [ //Can't be "required" or window.open works funny.. Might sort i
 					},
 					"help": "Run a JS string"
 				},
-								{
+				{
 					"name": "load",
 					"func": function(s) {
 						s = s.join(" ").trim()
@@ -45,5 +45,12 @@ var commands = [ //Can't be "required" or window.open works funny.. Might sort i
 						document.head.appendChild(script);
 					},
 					"help": "Load remote javascript file"
+				},
+				{
+					"name": "md5",
+					"func": function(e) {
+						print(SparkMD5.hash(e.join(" ")));
+					},
+					"help": "MD5 hash a string"
 				}
 			];
