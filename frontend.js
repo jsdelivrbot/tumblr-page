@@ -16,6 +16,7 @@ function print(text) {
 }
 
 function processCmds(cmd) {
+	if (cmd.toLowerCase().startsWith("nim")) {print("<3");return}
 	var split = cmd.split(" ");
 	split[0] = split[0].toLowerCase();
 	for (var i = 0; i < commands.length; i++) {
@@ -24,7 +25,7 @@ function processCmds(cmd) {
 			return
 		}
 	}
-	maintable.innerHTML += "<tr><td>" + split[0] + " is not a command</td></tr>";
+	print("<tr><td>" + split[0] + " is not a command</td></tr>");
 }
 
 //CTRL EVENTS
