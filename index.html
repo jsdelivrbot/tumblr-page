@@ -3,11 +3,29 @@
 	<meta charset="utf8">
 	<title>error505.exe</title>
 	
-	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/505e06b2/tumblr-page/master/global.css">
-	
-	<script src="https://cdn.rawgit.com/505e06b2/tumblr-page/master/frontend.js"></script>
-	<script src="https://cdn.rawgit.com/505e06b2/tumblr-page/master/commands.js"></script>
-	
 	<link rel="icon" type="image/png" href="{Favicon}" />
+	<script>
+		var commit = {
+			"frontend": "c930b24eca1df1caac688855078ecf3a746fe3eb",
+			"global": "master",
+			"commands": "d216f6155045305d3aabbf671618ea0e55b7c0ae";
+		}
+	
+	
+		var url = "https://cdn.rawgit.com/505e06b2/tumblr-page/";
+		function getLink(commit, file) {
+			return url + commit + "/" + file;
+		}
+		
+		function appendScript(src) {
+			var temp = document.createElement("script");
+			temp.src = src;
+			document.head.appendChild(temp);
+		}
+		
+		document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="' + url + commit.global + '/global.css">';
+		appendScript(getLink(commit.frontend, "frontend.js"));
+		appendScript(getLink(commit.commands, "commands.js"));
+	</script>
 </head>
 </html>
