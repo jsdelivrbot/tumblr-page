@@ -28,6 +28,18 @@ function processCmds(cmd) {
 	print("<tr><td>" + split[0] + " is not a command</td></tr>");
 }
 
+function getUrlRegex(text) {
+	var regex = /(?:\?|&)(.+?)(?=$|&)/g;
+	var res = [];
+    var match = null;
+
+    while (match = regex.exec(text)) {
+        res.push(match[1]);
+    }
+
+    return res;
+}
+
 //CTRL EVENTS
 var ctrlDown = false;
 window.onkeydown = function(e) {
@@ -35,7 +47,6 @@ window.onkeydown = function(e) {
 		ctrlDown = true;
 	} else if (e.keyCode == 38) { //Up Arrow
 		currenttext.innerHTML = lastcommand;
-		e.preventDefault();
 	}
 }
 window.onkeyup = function(e) {
@@ -67,5 +78,9 @@ window.onload = function() {
 	print("505e06b2 Firmware [Version 1.01]");
 	print("Copyright (c) 2016 505e06b2.  All rights reserved.");
 	print("&nbsp;");
+	//PARSE url
+	getUrlRegex(unescape(location.search)).forEach(function(e, i) {
+		processCmds(e);
+	});
 	generateLine();
 }
