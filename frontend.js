@@ -16,7 +16,7 @@ function print(text) {
 }
 
 function processCmds(cmd) {
-	if (cmd.toLowerCase().startsWith("nim")) {print("<3");return}
+	if (cmd.toLowerCase().startsWith("nim")) {location.href="https://www.youtube.com/watch?v=acoZukU67qE";return}
 	var split = cmd.split(" ");
 	split[0] = split[0].toLowerCase();
 	for (var i = 0; i < commands.length; i++) {
