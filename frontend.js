@@ -1,5 +1,5 @@
 function generateLine() {
-	maintable.innerHTML += "<tr><td><div id='currentline' class='textin'>user@desktop><span id='edit' contenteditable='true'></span></div></td></tr>";
+	maintable.innerHTML += "<tr><td><div id='currentline' class='textin'>user@{Title}><span id='edit' contenteditable='true'></span></div></td></tr>";
 	currentline = document.getElementById("currentline");
 	currenttext = document.getElementById("edit");
 	currenttext.onkeydown = function(e) {
