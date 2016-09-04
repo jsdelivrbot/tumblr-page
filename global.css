@@ -1,0 +1,24 @@
+body {
+	padding:0;
+	margin:0;
+	background-color: #1a1a1a;
+	color: #eee;
+	font-family: Monospace;
+	height:100%;
+	cursor: text;
+}
+#edit {
+	outline: none;
+}
+table {
+	border-spacing:0;
+	border-collapse: collapse;
+	width:100%;
+}
+.textin {
+	width:100%;
+	word-wrap: break-word;
+	word-break: break-all;
+	white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
+	white-space: normal;
+}
