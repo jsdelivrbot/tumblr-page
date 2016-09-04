@@ -75,7 +75,7 @@ var lastcommand = "";
 window.onload = function() {
 	maintable = document.createElement("table");
 	document.body.appendChild(maintable);
-	print("505e06b2 Firmware [Version 1.01]");
+	print("505e06b2 Firmware [" + (new Date).getTime() + "]");
 	print("Copyright (c) 2016 505e06b2.  All rights reserved.");
 	print("&nbsp;");
 	//PARSE url
