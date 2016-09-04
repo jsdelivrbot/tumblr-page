@@ -85,7 +85,7 @@ var lastcommand = "";
 window.onload = function() {
 	maintable = document.createElement("table");
 	document.body.appendChild(maintable);
-	print("505e06b2 Firmware [" + (new Date).getTime() + "]");
+	print("505e06b2 Firmware [Version: " + SparkMD5.hash(commit.frontend + commit.commands + commit.global) + "]");
 	print("Copyright (c) 2016 505e06b2.  All rights reserved.");
 	print("&nbsp;");
 	//PARSE url
