@@ -47,10 +47,13 @@ var commands = [ //Can't be "required" or window.open works funny.. Might sort i
 					"help": "Load remote javascript file"
 				},
 				{
-					"name": "md5",
+					"name": "su",
 					"func": function(e) {
-						print(SparkMD5.hash(e.join(" ")));
+						var temp = e.join(" ").trim();
+						if (temp.length == 0) return;
+						username = temp;
+						localStorage.username = temp;
 					},
-					"help": "MD5 hash a string"
+					"help": "Log in to an account"
 				}
 			];
