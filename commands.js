@@ -68,7 +68,7 @@ var commands = [
 							"help": {
 								"func": function() {
 									for (var key in ytcmds) {
-										print(ytcmds[key].help);
+										print(key + ": " + ytcmds[key].help);
 									}
 								},
 								"help": "Displays help functions"
