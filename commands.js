@@ -49,10 +49,14 @@ var commands = [ //Can't be "required" or window.open works funny.. Might sort i
 				{
 					"name": "su",
 					"func": function(e) {
-						var temp = e.join(" ").trim();
-						if (temp.length == 0) return;
-						username = temp;
-						localStorage.username = temp;
+						if (e.join(" ").length == 0) return;
+						var temp = allusers[e[0]];
+						if (temp == SparkMD5.hash(e[1])) {
+							username = temp;
+							localStorage.username = temp;
+						} else {
+							print("Incorrect Credentials");
+						}
 					},
 					"help": "Log in to an account"
 				}
