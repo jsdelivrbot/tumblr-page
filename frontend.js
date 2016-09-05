@@ -68,7 +68,8 @@ window.onkeypress = function(e) {
 	if ((e.keyCode == 13 || e.key == "Enter" ) && e.target.id == "edit") {
 		e.target.outerHTML = e.target.innerHTML;
 		lastcommand = e.target.textContent;
-		if (e.target.textContent.trim() != "") processCmds(e.target.textContent);
+		var temp = e.target.textContent.trim();
+		if (temp != "") processCmds(temp);
 		generateLine();
 		e.preventDefault(); //No newline at the end
 	}
