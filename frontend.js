@@ -1,5 +1,5 @@
 function generateLine() {
-	maintable.innerHTML += "<tr><td><div id='currentline' class='textin'>user@desktop><span id='edit' contenteditable='true'></span></div></td></tr>";
+	maintable.innerHTML += "<tr><td><div id='currentline' class='textin'>" + username + "@desktop><span id='edit' contenteditable='true'></span></div></td></tr>";
 	currentline = document.getElementById("currentline");
 	currenttext = document.getElementById("edit");
 	currenttext.onkeydown = function(e) {
@@ -82,6 +82,7 @@ var maintable;
 var currentline;
 var currenttext;
 var lastcommand = "";
+var username = (localStorage.username) ? localStorage.username : "user";
 window.onload = function() {
 	maintable = document.createElement("table");
 	document.body.appendChild(maintable);
