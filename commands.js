@@ -81,6 +81,11 @@ var commands = [
 									}
 									var id = /(?:&|\?)(?:v=)(.+?)(?:&|$)/.exec(params);
 									if (id) {
+										var old = document.getElementById("youtube");
+										if (old) {
+											document.body.removeChild(old);
+											print("Youtube player removed");
+										}
 										var temp = document.createElement("iframe");
 										temp.id = "youtube";
 										temp.width = 0;
@@ -106,6 +111,20 @@ var commands = [
 									}
 								},
 								"help": "Remove the Youtube player"
+							},
+							"reload": {
+								"func": function() {
+									var temp = document.getElementById("youtube");
+									if (temp) {
+										var old = temp.src;
+										temp.src = location.href;
+										temp.src = old;
+										print("Youtube player reloaded");
+									} else {
+										print("No Youtube player to reload");
+									}
+								},
+								"help": "Reload the Youtube player"
 							}
 						};
 						if (!e[0]) {ytcmds.help.func();return}
