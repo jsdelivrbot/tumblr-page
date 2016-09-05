@@ -93,7 +93,19 @@ var commands = [
 									}
 									return;
 								},
-								"help": "Paste youtube URL to play"
+								"help": "Paste a Youtube URL to play"
+							},
+							"unload": {
+								"func": function() {
+									var temp = document.getElementById("youtube");
+									if (temp) {
+										document.body.removeChild(temp);
+										print("Youtube player removed");
+									} else {
+										print("No player to remove");
+									}
+								},
+								"help": "Remove the Youtube player"
 							}
 						};
 						if (!e[0]) {ytcmds.help.func();return}
