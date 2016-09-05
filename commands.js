@@ -53,6 +53,7 @@ var commands = [ //Can't be "required" or window.open works funny.. Might sort i
 						if (allusers[e[0]] == SparkMD5.hash(e[1])) {
 							username = e[0];
 							localStorage.username = e[0];
+							print("Welcome, " + username);
 						} else {
 							print("Incorrect Credentials");
 						}
