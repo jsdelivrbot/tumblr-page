@@ -1,4 +1,4 @@
-var commands = [ //Can't be "required" or window.open works funny.. Might sort it later
+var commands = [
 				{
 					"name": "help",
 					"func": function() {
@@ -59,5 +59,51 @@ var commands = [ //Can't be "required" or window.open works funny.. Might sort i
 						}
 					},
 					"help": "Log in to an account: su [user] [pass]"
+				},
+				{
+					"name": "youtube",
+					"func": function(e) {
+						var params = null;
+						var ytcmds = {
+							"help": {
+								"func": function() {
+									for (var key in ytcmds) {
+										print(ytcmds[key].help);
+									}
+								},
+								"help": "Displays help functions"
+							},
+							"load": {
+								"func": function() {
+									if (!params) {
+										print("No link posted");
+										return;
+									}
+									var id = /(?:&|\?)(?:v=)(.+?)(?:&|$)/.exec(params);
+									if (id) {
+										var temp = document.createElement("iframe");
+										temp.id = "youtube";
+										temp.width = 0;
+										temp.height = 0;
+										temp.src = "https://www.youtube.com/embed/" + id[1] + "?autoplay=1&loop=1&playlist=" + id[1];
+										document.body.insertBefore(temp, maintable);
+										print("Created Youtube player");
+									} else {
+										print("Not a Youtube link");
+									}
+									return;
+								},
+								"help": "Paste youtube URL to play"
+							}
+						};
+						if (!e[0]) {ytcmds.help.func();return}
+						if (e[1]) params = e[1];
+						if (ytcmds[e[0]]) {
+							ytcmds[e[0].toLowerCase()].func();
+						} else {
+							print("Invalid Youtube Command");
+						}
+					},
+					"help": "Youtube controls; use `youtube help` for specific commands"
 				}
 			];

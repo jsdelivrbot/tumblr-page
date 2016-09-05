@@ -11,6 +11,9 @@ body {
 #edit {
 	outline: none;
 }
+#youtube {
+	display:none;
+}
 table {
 	border-spacing:0;
 	border-collapse: collapse;
