@@ -87,7 +87,7 @@ var username = (localStorage.username) ? localStorage.username : "user";
 window.onload = function() {
 	maintable = document.createElement("table");
 	document.body.appendChild(maintable);
-	print("505e06b2 Firmware [Version: " + SparkMD5.hash(commit.frontend + commit.commands + commit.global) + "]");
+	print("505e06b2 Firmware [Version: " + SparkMD5.hash((function() {var temp = []; for(var key in commit) temp.push(commit[key]); return temp.join("")})()) + "]");
 	print("Copyright (c) 2016 505e06b2.  All rights reserved.");
 	print("&nbsp;");
 	//PARSE url
