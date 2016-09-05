@@ -49,7 +49,7 @@ var commands = [ //Can't be "required" or window.open works funny.. Might sort i
 				{
 					"name": "su",
 					"func": function(e) {
-						if (e.join(" ").length == 0) return;
+						if (!(e[0] && e[1])) return;
 						if (allusers[e[0]] == SparkMD5.hash(e[1])) {
 							username = e[0];
 							localStorage.username = e[0];
@@ -57,6 +57,6 @@ var commands = [ //Can't be "required" or window.open works funny.. Might sort i
 							print("Incorrect Credentials");
 						}
 					},
-					"help": "Log in to an account"
+					"help": "Log in to an account: su [user] [pass]"
 				}
 			];
