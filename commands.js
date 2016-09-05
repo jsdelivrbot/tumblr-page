@@ -50,10 +50,9 @@ var commands = [ //Can't be "required" or window.open works funny.. Might sort i
 					"name": "su",
 					"func": function(e) {
 						if (e.join(" ").length == 0) return;
-						var temp = allusers[e[0]];
-						if (temp == SparkMD5.hash(e[1])) {
-							username = temp;
-							localStorage.username = temp;
+						if (allusers[e[0]] == SparkMD5.hash(e[1])) {
+							username = e[0];
+							localStorage.username = e[0];
 						} else {
 							print("Incorrect Credentials");
 						}
