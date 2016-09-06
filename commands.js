@@ -143,7 +143,12 @@ var commands = [
 								"func": function() {
 									if (params) {
 										var temp = parseInt(params, 10);
-										if (!temp) temp = 0;
+										if (!temp || temp < 0) {
+											temp = 0;
+										} else if (temp > 100) {
+											temp = 100;
+										}
+										
 										if (youtubeplayer) {
 											youtubeplayer.setVolume(temp);
 										}
