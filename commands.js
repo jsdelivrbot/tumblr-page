@@ -69,6 +69,7 @@ var commands = [
 						var ytcmds = {
 							"help": {
 								"func": function() {
+									print("It is recommended to block ads for Youtube.com for a better listening experience");
 									for (var key in ytcmds) {
 										print(key + ": " + ytcmds[key].help);
 									}
