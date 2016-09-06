@@ -12,7 +12,7 @@ var commands = [
 				{
 					"name": "echo",
 					"func": function(out) {
-						print(out.join(" "));
+						print(out.join("&nbsp;"));
 					},
 					"help": "Print something"
 				},
