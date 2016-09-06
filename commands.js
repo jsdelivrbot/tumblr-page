@@ -47,6 +47,14 @@ var commands = [
 					"help": "Load remote javascript file"
 				},
 				{
+					"name": "colour",
+					"func": function(s) {
+						s = s.join(" ").trim()
+						maintable.style.color = s;
+					},
+					"help": "Change the colour of the text in the console"
+				},
+				{
 					"name": "su",
 					"func": function(e) {
 						var line = (function(params) {var temp = []; params.forEach(function(e,i){if (e.length != 0) temp.push(e)});return temp})(e);
