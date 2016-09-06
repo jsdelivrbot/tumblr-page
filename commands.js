@@ -128,9 +128,10 @@ var commands = [
 							}
 						};
 						if (!e[0]) {ytcmds.help.func();return}
+						e[0] = e[0].toLowerCase();
 						if (e[1]) params = e[1];
 						if (ytcmds[e[0]]) {
-							ytcmds[e[0].toLowerCase()].func();
+							ytcmds[e[0]].func();
 						} else {
 							print("Invalid Youtube Command");
 						}
