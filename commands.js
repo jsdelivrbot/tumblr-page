@@ -49,10 +49,11 @@ var commands = [
 				{
 					"name": "su",
 					"func": function(e) {
-						if (!(e[0] && e[1])) return;
-						if (allusers[e[0]] == SparkMD5.hash(e[1])) {
-							username = e[0];
-							localStorage.username = e[0];
+						var line = (function(params) {var temp = []; params.forEach(function(e,i){if (e.length != 0) temp.push(e)});return temp})(e);
+						if (!(line[0] && line[1])) return;
+						if (allusers[line[0]] == SparkMD5.hash(line[1])) {
+							username = line[0];
+							localStorage.username = line[0];
 							print("Welcome, " + username);
 						} else {
 							print("Incorrect Credentials");
@@ -63,6 +64,7 @@ var commands = [
 				{
 					"name": "youtube",
 					"func": function(e) {
+						var line = (function(params) {var temp = []; params.forEach(function(e,i){if (e.length != 0) temp.push(e)});return temp})(e);
 						var params = null;
 						var ytcmds = {
 							"help": {
@@ -127,11 +129,11 @@ var commands = [
 								"help": "Reload the Youtube player"
 							}
 						};
-						if (!e[0]) {ytcmds.help.func();return}
-						e[0] = e[0].toLowerCase();
-						if (e[1]) params = e[1];
-						if (ytcmds[e[0]]) {
-							ytcmds[e[0]].func();
+						if (!line[0]) {ytcmds.help.func();return}
+						line[0] = line[0].toLowerCase();
+						if (line[1]) params = line[1];
+						if (ytcmds[line[0]]) {
+							ytcmds[line[0]].func();
 						} else {
 							print("Invalid Youtube Command");
 						}
