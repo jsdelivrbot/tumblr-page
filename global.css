@@ -14,11 +14,6 @@ body {
 #youtube {
 	display:none;
 }
-table {
-	border-spacing:0;
-	border-collapse: collapse;
-	width:100%;
-}
 .textin {
 	width:100%;
 	word-wrap: break-word;
