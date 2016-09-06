@@ -50,24 +50,10 @@ function getUrlRegex(text) {
     return res;
 }
 
-//CTRL EVENTS
-var ctrlDown = false;
-window.onkeydown = function(e) {
-	if (e.keyCode == 17 || e.keyCode == 91) { //CTRL or CMD
-		ctrlDown = true;
-	} else if (e.keyCode == 38) { //Up Arrow
-		currenttext.innerHTML = lastcommand;
-	}
-}
-window.onkeyup = function(e) {
-	if (e.keyCode == 17 || e.keyCode == 91) ctrlDown = false;
-}
-
 //PRESS ENTER
 window.onkeypress = function(e) {
 	if ((e.keyCode == 13 || e.key == "Enter" ) && e.target.id == "edit") {
 		e.target.outerHTML = e.target.innerHTML;
-		lastcommand = e.target.textContent;
 		var temp = e.target.textContent.trim();
 		if (temp != "") processCmds(temp);
 		generateLine();
@@ -97,7 +83,6 @@ window.onmouseup = function(e) {
 var maintable;
 var currentline;
 var currenttext;
-var lastcommand = "";
 var username = (localStorage.username) ? localStorage.username : "user";
 var youtubeplayer = null; //Used for the youtube player
 window.onload = function() {
