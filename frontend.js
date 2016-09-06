@@ -2,6 +2,12 @@ function generateLine() {
 	maintable.innerHTML += "<div><div id='currentline' class='textin'>" + username + "@desktop><span id='edit' contenteditable='true'></span></div></div>";
 	currentline = document.getElementById("currentline");
 	currenttext = document.getElementById("edit");
+	currenttext.onpaste = function(e) {
+		for (var i = 0, temp = e.clipboardData.types; i < temp.length; i++) {
+			if (temp[i] == "text/plain") return;
+		}
+		e.preventDefault();
+	}
 	currenttext.focus();
 }
 
