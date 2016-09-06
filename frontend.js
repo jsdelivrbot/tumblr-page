@@ -84,6 +84,7 @@ var currentline;
 var currenttext;
 var lastcommand = "";
 var username = (localStorage.username) ? localStorage.username : "user";
+var youtubeplayer = null; //Used for the youtube player
 window.onload = function() {
 	maintable = document.createElement("table");
 	document.body.appendChild(maintable);
