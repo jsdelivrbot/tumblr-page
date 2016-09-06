@@ -85,16 +85,25 @@ var commands = [
 									if (id) {
 										var old = document.getElementById("youtube");
 										if (old) {
-											document.body.removeChild(old);
+											youtubeplayer.destroy();
 											print("Youtube player removed");
 										}
 										var temp = document.createElement("iframe");
 										temp.id = "youtube";
 										temp.width = 0;
 										temp.height = 0;
-										temp.src = "https://www.youtube.com/embed/" + id[1] + "?autoplay=1&loop=1&playlist=" + id[1];
+										temp.src = "https://www.youtube.com/embed/" + id[1] + "?autoplay=1&loop=1&playlist=" + id[1] + "&enablejsapi=1";
 										document.body.insertBefore(temp, maintable);
+										youtubeplayer = new YT.Player(temp.id);
 										print("Created Youtube player");
+										if (localStorage.ytvol) {
+											print("Youtube player volume is " + localStorage.ytvol + "%");
+										}
+										temp.onload = function() {
+											if (localStorage.ytvol) {
+												youtubeplayer.setVolume(localStorage.ytvol);
+											}
+										}
 									} else {
 										print("Not a Youtube link");
 									}
@@ -106,7 +115,7 @@ var commands = [
 								"func": function() {
 									var temp = document.getElementById("youtube");
 									if (temp) {
-										document.body.removeChild(temp);
+										youtubeplayer.destroy();
 										print("Youtube player removed");
 									} else {
 										print("No player to remove");
@@ -127,6 +136,19 @@ var commands = [
 									}
 								},
 								"help": "Reload the Youtube player"
+							},
+							"volume": {
+								"func": function() {
+									if (params) {
+										var temp = parseInt(params, 10);
+										if (youtubeplayer) {
+											youtubeplayer.setVolume(temp);
+										}
+										localStorage.ytvol = temp;
+										print("Youtube player volume is now " + ((temp) ? temp + "%" : "Muted"));
+									}
+								},
+								"help": "Set the volume (0 - 100)"
 							}
 						};
 						if (!line[0]) {ytcmds.help.func();return}
