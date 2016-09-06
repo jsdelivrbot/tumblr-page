@@ -98,6 +98,7 @@ var commands = [
 										youtubeplayer = new YT.Player(temp.id);
 										print("Created Youtube player");
 										if (localStorage.ytvol) {
+											console.log("'" + localStorage.ytvol + "'")
 											print("Youtube player volume is " + localStorage.ytvol + "%");
 										}
 										temp.onload = function() {
@@ -142,11 +143,12 @@ var commands = [
 								"func": function() {
 									if (params) {
 										var temp = parseInt(params, 10);
+										if (!temp) temp = 0;
 										if (youtubeplayer) {
 											youtubeplayer.setVolume(temp);
 										}
 										localStorage.ytvol = temp;
-										print("Youtube player volume is now " + ((temp) ? temp + "%" : "Muted"));
+										print("Youtube player volume is now " + temp + "%");
 									}
 								},
 								"help": "Set the volume (0 - 100)"
