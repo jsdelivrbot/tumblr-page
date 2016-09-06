@@ -27,15 +27,15 @@ function processCmds(cmd) {
 		return;
 	}
 	
-	var split = cmd.split(" ");
-	split[0] = split[0].toLowerCase();
+	var cmdsplit = cmd.split(/\s/g);
+	cmdsplit[0] = cmdsplit[0].toLowerCase();
 	for (var i = 0; i < commands.length; i++) {
-		if (commands[i].name == split[0]) {
-			commands[i].func(split.splice(1));
+		if (commands[i].name == cmdsplit[0]) {
+			commands[i].func(cmdsplit.splice(1));
 			return
 		}
 	}
-	print("<tr><td>" + split[0] + " is not a command</td></tr>");
+	print("<tr><td>" + cmdsplit[0] + " is not a command</td></tr>");
 }
 
 function getUrlRegex(text) {
