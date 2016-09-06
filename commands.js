@@ -93,12 +93,20 @@ var commands = [
 										temp.id = "youtube";
 										temp.width = 0;
 										temp.height = 0;
-										temp.src = "https://www.youtube.com/embed/" + id[1] + "?autoplay=1&loop=1&playlist=" + id[1] + "&enablejsapi=1";
+										temp.src = "https://www.youtube.com/embed/" + id[1] + "?autoplay=1&enablejsapi=1";
 										document.body.insertBefore(temp, maintable);
-										youtubeplayer = new YT.Player(temp.id);
+										youtubeplayer = new YT.Player(temp.id, {
+											events: {
+												onStateChange: 
+													function(e){
+														if (e.data === YT.PlayerState.ENDED) {
+															youtubeplayer.playVideo(); 
+														}
+													}
+											}
+										});
 										print("Created Youtube player");
 										if (localStorage.ytvol) {
-											console.log("'" + localStorage.ytvol + "'")
 											print("Youtube player volume is " + localStorage.ytvol + "%");
 										}
 										temp.onload = function() {
