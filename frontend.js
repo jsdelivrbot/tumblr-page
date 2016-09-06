@@ -1,5 +1,5 @@
 function generateLine() {
-	maintable.innerHTML += "<tr><td><div id='currentline' class='textin'>" + username + "@desktop><span id='edit' contenteditable='true'></span></div></td></tr>";
+	maintable.innerHTML += "<div><div id='currentline' class='textin'>" + username + "@desktop><span id='edit' contenteditable='true'></span></div></div>";
 	currentline = document.getElementById("currentline");
 	currenttext = document.getElementById("edit");
 	currenttext.onkeydown = function(e) {
@@ -12,7 +12,7 @@ function generateLine() {
 }
 
 function print(text) {
-	maintable.innerHTML += "<tr><td>" + text + "</td></tr>";
+	maintable.innerHTML += "<div>" + text + "</div>";
 }
 
 function processCmds(cmd) {
@@ -35,7 +35,7 @@ function processCmds(cmd) {
 			return
 		}
 	}
-	print("<tr><td>" + cmdsplit[0] + " is not a command</td></tr>");
+	print("<div>" + cmdsplit[0] + " is not a command</div>");
 }
 
 function getUrlRegex(text) {
@@ -75,10 +75,25 @@ window.onkeypress = function(e) {
 	}
 }
 
-window.onclick = function(e) {
+//Focus events
+window.onkeydown = function(e) {
 	currenttext.focus();
+	if(e.keyCode == 36) {
+		var range = document.createRange();
+		range.setStart(currenttext,0);
+		var sel = window.getSelection();
+		sel.removeAllRanges();
+		sel.addRange(range);
+	}
 }
 
+window.onmouseup = function(e) {
+	if (e.target.tagName == "BODY") {
+		currenttext.focus();
+	}
+}
+
+//Init
 var maintable;
 var currentline;
 var currenttext;
@@ -86,7 +101,7 @@ var lastcommand = "";
 var username = (localStorage.username) ? localStorage.username : "user";
 var youtubeplayer = null; //Used for the youtube player
 window.onload = function() {
-	maintable = document.createElement("table");
+	maintable = document.createElement("div");
 	document.body.appendChild(maintable);
 	print("505e06b2 Firmware [Version: " + SparkMD5.hash((function() {var temp = []; for(var key in commit) temp.push(commit[key]); return temp.join("")})()) + "]");
 	print("Copyright (c) 2016 505e06b2.  All rights reserved.");
