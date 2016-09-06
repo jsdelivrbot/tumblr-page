@@ -2,12 +2,6 @@ function generateLine() {
 	maintable.innerHTML += "<div><div id='currentline' class='textin'>" + username + "@desktop><span id='edit' contenteditable='true'></span></div></div>";
 	currentline = document.getElementById("currentline");
 	currenttext = document.getElementById("edit");
-	currenttext.onkeydown = function(e) {
-		if (ctrlDown && e.keyCode == 67) {
-			currenttext.outerHTML = currenttext.innerHTML;
-			generateLine();
-		}
-	}
 	currenttext.focus();
 }
 
@@ -61,8 +55,16 @@ window.onkeypress = function(e) {
 	}
 }
 
-//Focus events
+//Keydown
+var ctrl = false;
 window.onkeydown = function(e) {
+	if (e.keyCode == 17){
+		ctrl = true;
+		return;
+	}
+	if (ctrl && e.keyCode == 67) {
+		return;
+	}
 	currenttext.focus();
 	if(e.keyCode == 36) {
 		var range = document.createRange();
@@ -70,6 +72,13 @@ window.onkeydown = function(e) {
 		var sel = window.getSelection();
 		sel.removeAllRanges();
 		sel.addRange(range);
+	}
+}
+
+window.onkeyup = function(e) {
+	if (e.keyCode == 17){
+		ctrl = false;
+		return;
 	}
 }
 
