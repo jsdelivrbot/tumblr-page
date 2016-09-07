@@ -88,12 +88,6 @@ window.onkeyup = function(e) {
 	}
 }
 
-window.onmouseup = function(e) {
-	if (e.target.tagName == "BODY") {
-		currenttext.focus();
-	}
-}
-
 //Init
 var maintable;
 var currentline;
@@ -111,4 +105,10 @@ window.onload = function() {
 		processCmds(e);
 	});
 	generateLine();
+	
+	window.onmouseup = function(e) {
+		if (e.target.tagName == "BODY") {
+			currenttext.focus();
+		}
+	}
 }
