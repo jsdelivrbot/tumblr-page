@@ -115,13 +115,9 @@ var commands = [
 											}
 										});
 										print("Created Youtube player");
-										if (localStorage.ytvol) {
-											print("Youtube player volume is " + localStorage.ytvol + "%");
-										}
+										print("Youtube player volume is " + localStorage.ytvol + "%");										
 										temp.onload = function() {
-											if (localStorage.ytvol) {
-												youtubeplayer.setVolume(localStorage.ytvol);
-											}
+											youtubeplayer.setVolume(localStorage.ytvol);
 										}
 									} else {
 										print("Not a Youtube link");
