@@ -74,6 +74,7 @@ var commands = [
 					"func": function(e) {
 						var line = (function(params) {var temp = []; params.forEach(function(e,i){if (e.length != 0) temp.push(e)});return temp})(e);
 						var params = null;
+						if (!localStorage.ytvol) localStorage.ytvol = 100;
 						var ytcmds = {
 							"help": {
 								"func": function() {
