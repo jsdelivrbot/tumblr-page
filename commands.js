@@ -170,6 +170,8 @@ var commands = [
 										}
 										localStorage.ytvol = temp;
 										print("Youtube player volume is now " + temp + "%");
+									} else {
+										print("Youtube player volume is " + localStorage.ytvol + "%");
 									}
 								},
 								"help": "Set the volume (0 - 100)"
