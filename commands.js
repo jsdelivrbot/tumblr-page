@@ -42,6 +42,7 @@ var commands = [
 						s = s.join(" ").trim()
 						var script = document.createElement("script");
 						script.src = s;
+						script.onload = function() {generateLine();}
 						document.head.appendChild(script);
 					},
 					"help": "Load remote javascript file"
