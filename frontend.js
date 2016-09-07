@@ -1,4 +1,10 @@
 function generateLine() {
+	if (currentline) {
+		for (var i = 0, temp = document.querySelectorAll('[id="currentline"]'); i < temp.length; i++) {
+			temp[i].removeAttribute("id");
+			temp[i].children[0].outerHTML = temp[i].children[0].textContent;
+		}
+	}
 	maintable.innerHTML += "<div><div id='currentline' class='textin'>" + username + "@desktop><span id='edit' contenteditable='true'></span></div></div>";
 	currentline = document.getElementById("currentline");
 	currenttext = document.getElementById("edit");
@@ -53,7 +59,6 @@ function getUrlRegex(text) {
 //PRESS ENTER
 window.onkeypress = function(e) {
 	if ((e.keyCode == 13 || e.key == "Enter" ) && e.target.id == "edit") {
-		e.target.outerHTML = e.target.innerHTML;
 		var temp = e.target.textContent.trim();
 		if (temp != "") processCmds(temp);
 		generateLine();
