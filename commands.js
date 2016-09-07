@@ -171,7 +171,7 @@ var commands = [
 										print("Youtube player volume is " + localStorage.ytvol + "%");
 									}
 								},
-								"help": "Set the volume (0 - 100)"
+								"help": "Set the volume (0 - 100); saves between loads of the console"
 							}
 						};
 						if (!line[0]) {ytcmds.help.func();return}
