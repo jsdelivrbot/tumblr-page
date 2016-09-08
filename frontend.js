@@ -36,8 +36,7 @@ function processCmds(cmd) {
 	var cmdsplit = cmd.split(/\s/g);
 	cmdsplit[0] = cmdsplit[0].toLowerCase();
 	if (commands[cmdsplit[0]]) {
-		commands[cmdsplit[0]].func(cmdsplit.splice(1));
-		return
+		return commands[cmdsplit[0]].func(cmdsplit.splice(1));
 	}
 	print("<div>" + cmdsplit[0] + " is not a command</div>");
 }
@@ -58,8 +57,7 @@ function getUrlRegex(text) {
 window.onkeypress = function(e) {
 	if ((e.keyCode == 13 || e.key == "Enter" ) && e.target.id == "edit") {
 		var temp = e.target.textContent.trim();
-		if (temp != "") processCmds(temp);
-		generateLine();
+		if (temp != "") if (processCmds(temp) !== false) generateLine();
 		e.preventDefault(); //No newline at the end
 	}
 }
