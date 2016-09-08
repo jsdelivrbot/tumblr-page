@@ -16,13 +16,15 @@ function generateLine() {
 }
 
 function print(text) {
-	maintable.innerHTML += "<div>" + text + "</div>";
+	var node = document.createElement('div');
+	node.appendChild(document.createTextNode(text));
+	maintable.innerHTML += "<div>" + node.innerHTML + "</div>";
 }
 
 function processCmds(cmd) {
 	
 	//Spooky Secret EasterEggs
-	var temp = cmd.text.toLowerCase();
+	var temp = cmd.toLowerCase();
 	if(temp.startsWith("nim")) {
 		location.href = "https://www.youtube.com/watch?v=acoZukU67qE";
 		return;
@@ -31,12 +33,12 @@ function processCmds(cmd) {
 		return;
 	}
 	
-	var cmdsplit = cmd.text.split(/\s/g);
+	var cmdsplit = cmd.split(/\s/g);
 	cmdsplit[0] = cmdsplit[0].toLowerCase();
 	if (commands[cmdsplit[0]]) {
 		return commands[cmdsplit[0]].func(cmdsplit.splice(1));
 	}
-	print("<div>" + cmd.html.split(" ")[0] + " is not a command</div>");
+	print(cmd.split(" ")[0] + " is not a command");
 }
 
 function getUrlRegex(text) {
@@ -54,7 +56,7 @@ function getUrlRegex(text) {
 //PRESS ENTER
 window.onkeypress = function(e) {
 	if ((e.keyCode == 13 || e.key == "Enter" ) && e.target.id == "edit") {
-		var temp = {"html": e.target.innerHTML.trim(), "text": e.target.textContent.trim()}
+		var temp = e.target.textContent.trim();
 		if (temp != "") if (processCmds(temp) !== false) generateLine();
 		e.preventDefault(); //No newline at the end
 	}
@@ -93,19 +95,16 @@ var maintable;
 var currenttext;
 var username = "user";
 var youtubeplayer = null; //Used for the youtube player
+var blankline = " "//Alt 255 for blank line
 window.onload = function() {
 	maintable = document.createElement("div");
 	document.body.appendChild(maintable);
 	print("505e06b2 Firmware [Version: " + SparkMD5.hash((function() {var temp = []; for(var key in commit) temp.push(commit[key]); return temp.join("")})()) + "]");
 	print("Copyright (c) 2016 505e06b2.  All rights reserved.");
-	print("&nbsp;");
+	print(blankline);
 	//PARSE url
 	getUrlRegex(unescape(location.search)).forEach(function(e, i) {
-		e = unescape(e);
-		var node = document.createElement('div');
-		node.appendChild(document.createTextNode(e));
-		var temp = {"html": node.innerHTML.trim(), "text": e.trim()}
-		processCmds(temp);
+		processCmds(unescape(e).trim());
 	});
 	generateLine();
 	

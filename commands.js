@@ -3,7 +3,7 @@ var commands = {
 					"func": function() {
 						print("For all commands, there is no need for (\") as whitespace is ignored");
 						print("Press Esc to bring up a newline if something breaks or you want to cancel the last operation");
-						print("&nbsp;");
+						print(blankline);
 						for (var key in commands) {
 							print(key + ": " + commands[key].help);
 						}
@@ -12,9 +12,7 @@ var commands = {
 				},
 				"echo": {
 					"func": function(out) {
-						var node = document.createElement('div');
-						node.appendChild(document.createTextNode(out.join(" ")));
-						print(node.innerHTML);
+						print(out.join(" "));
 					},
 					"help": "Print something"
 				},
