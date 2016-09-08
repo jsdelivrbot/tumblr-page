@@ -57,7 +57,9 @@ function getUrlRegex(text) {
 window.onkeypress = function(e) {
 	if ((e.keyCode == 13 || e.key == "Enter" ) && e.target.id == "edit") {
 		var temp = e.target.textContent.trim();
-		if (temp != "") if (processCmds(temp) !== false) generateLine();
+		if (temp == "") {
+			generateLine();
+		} else if (processCmds(temp) !== false) generateLine();
 		e.preventDefault(); //No newline at the end
 	}
 }
