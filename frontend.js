@@ -2,10 +2,10 @@ function generateLine() {
 	if (currentline) {
 		for (var i = 0, temp = document.querySelectorAll('[id="currentline"]'); i < temp.length; i++) {
 			temp[i].removeAttribute("id");
-			temp[i].children[0].outerHTML = temp[i].children[0].textContent;
+			temp[i].children[1].outerHTML = temp[i].children[1].innerHTML; //If the currentline gets changed, this needs to be too
 		}
 	}
-	maintable.innerHTML += "<div><div id='currentline' class='textin'>" + username + "@desktop><span id='edit' contenteditable='true'></span></div></div>";
+	maintable.innerHTML += "<div><div id='currentline' class='textin'><span style='background-color:" + allusers[username].bg + ";color:" + allusers[username].colour + "'>" + username + "</span>@desktop><span id='edit' contenteditable='true'></span></div></div>";
 	currentline = document.getElementById("currentline");
 	currenttext = document.getElementById("edit");
 	currenttext.onpaste = function(e) {
@@ -94,7 +94,7 @@ window.onkeyup = function(e) {
 var maintable;
 var currentline;
 var currenttext;
-var username = (localStorage.username) ? localStorage.username : "user";
+var username = "user";
 var youtubeplayer = null; //Used for the youtube player
 window.onload = function() {
 	maintable = document.createElement("div");

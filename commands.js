@@ -56,8 +56,9 @@ var commands = {
 				"su": {
 					"func": function(e) {
 						var line = (function(params) {var temp = []; params.forEach(function(e,i){if (e.length != 0) temp.push(e)});return temp})(e);
+						if (line[0] == "user") {username = "user";return}
 						if (!(line[0] && line[1])) return;
-						if (allusers[line[0]] == SparkMD5.hash(line[1])) {
+						if (allusers[line[0]] && allusers[line[0]].pass == SparkMD5.hash(line[1])) {
 							username = line[0];
 							localStorage.username = line[0];
 							print("Welcome, " + username);
