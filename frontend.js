@@ -1,12 +1,10 @@
 function generateLine() {
-	if (currentline) {
-		for (var i = 0, temp = document.querySelectorAll('[id="currentline"]'); i < temp.length; i++) {
+	if (currenttext) {
+		for (var i = 0, temp = document.querySelectorAll('[id="edit"]'); i < temp.length; i++) {
 			temp[i].removeAttribute("id");
-			temp[i].children[1].outerHTML = temp[i].children[1].innerHTML; //If the currentline gets changed, this needs to be too
 		}
 	}
-	maintable.innerHTML += "<div><div id='currentline' class='textin'><span style='background-color:" + allusers[username].bg + ";color:" + allusers[username].colour + "'>" + username + "</span>@desktop><span id='edit' contenteditable='true'></span></div></div>";
-	currentline = document.getElementById("currentline");
+	maintable.innerHTML += "<div><div class='textin'><span style='background-color:" + allusers[username].bg + ";color:" + allusers[username].colour + "'>" + username + "</span>@desktop><span id='edit' contenteditable='true'></span></div></div>";
 	currenttext = document.getElementById("edit");
 	currenttext.onpaste = function(e) {
 		for (var i = 0, temp = e.clipboardData.types; i < temp.length; i++) {
@@ -24,7 +22,7 @@ function print(text) {
 function processCmds(cmd) {
 	
 	//Spooky Secret EasterEggs
-	var temp = cmd.toLowerCase();
+	var temp = cmd.text.toLowerCase();
 	if(temp.startsWith("nim")) {
 		location.href = "https://www.youtube.com/watch?v=acoZukU67qE";
 		return;
@@ -33,12 +31,12 @@ function processCmds(cmd) {
 		return;
 	}
 	
-	var cmdsplit = cmd.split(/\s/g);
+	var cmdsplit = cmd.text.split(/\s/g);
 	cmdsplit[0] = cmdsplit[0].toLowerCase();
 	if (commands[cmdsplit[0]]) {
 		return commands[cmdsplit[0]].func(cmdsplit.splice(1));
 	}
-	print("<div>" + cmdsplit[0] + " is not a command</div>");
+	print("<div>" + cmd.html.split(" ")[0] + " is not a command</div>");
 }
 
 function getUrlRegex(text) {
@@ -56,7 +54,7 @@ function getUrlRegex(text) {
 //PRESS ENTER
 window.onkeypress = function(e) {
 	if ((e.keyCode == 13 || e.key == "Enter" ) && e.target.id == "edit") {
-		var temp = e.target.textContent.trim();
+		var temp = {"html": e.target.innerHTML.trim(), "text": e.target.textContent.trim()}
 		if (temp != "") if (processCmds(temp) !== false) generateLine();
 		e.preventDefault(); //No newline at the end
 	}
@@ -92,7 +90,6 @@ window.onkeyup = function(e) {
 
 //Init
 var maintable;
-var currentline;
 var currenttext;
 var username = "user";
 var youtubeplayer = null; //Used for the youtube player
