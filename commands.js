@@ -37,10 +37,10 @@ var commands = {
 						s = s.join(" ").trim()
 						var script = document.createElement("script");
 						script.src = s;
-						script.onload = function() {generateLine();}
+						script.onload = function() {print("Loaded " + s);generateLine()}
 						document.head.appendChild(script);
 					},
-					"help": "Load remote javascript file"
+					"help": "Load remote javascript file asyncronously"
 				},
 				"colour": {
 					"func": function(s) {
