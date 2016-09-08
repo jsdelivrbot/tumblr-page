@@ -68,9 +68,10 @@ window.onkeydown = function(e) {
 	if (e.keyCode == 17){
 		ctrl = true;
 		return;
-	}
-	if (ctrl && e.keyCode == 67) {
+	} else if (ctrl && e.keyCode == 67) { //CTRL C
 		return;
+	} else if (e.keyCode == 27) { //Esc
+		generateLine();
 	}
 	currenttext.focus();
 	if(e.keyCode == 36) {
