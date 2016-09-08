@@ -101,7 +101,11 @@ window.onload = function() {
 	print("&nbsp;");
 	//PARSE url
 	getUrlRegex(unescape(location.search)).forEach(function(e, i) {
-		processCmds(e);
+		e = unescape(e);
+		var node = document.createElement('div');
+		node.appendChild(document.createTextNode(e));
+		var temp = {"html": node.innerHTML.trim(), "text": e.trim()}
+		processCmds(temp);
 	});
 	generateLine();
 	
