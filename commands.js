@@ -1,7 +1,8 @@
 var commands = {
 				"help": {
 					"func": function() {
-						print("For all commands, there is no need for (\") as whitespace is ignored")
+						print("For all commands, there is no need for (\") as whitespace is ignored");
+						print("Press Esc to bring up a newline if something breaks or you want to cancel the last operation");
 						for (var key in commands) {
 							print(key + ": " + commands[key].help);
 						}
