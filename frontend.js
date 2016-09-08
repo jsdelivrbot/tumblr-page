@@ -35,11 +35,9 @@ function processCmds(cmd) {
 	
 	var cmdsplit = cmd.split(/\s/g);
 	cmdsplit[0] = cmdsplit[0].toLowerCase();
-	for (var i = 0; i < commands.length; i++) {
-		if (commands[i].name == cmdsplit[0]) {
-			commands[i].func(cmdsplit.splice(1));
-			return
-		}
+	if (commands[cmdsplit[0]]) {
+		commands[cmdsplit[0]].func(cmdsplit.splice(1));
+		return
 	}
 	print("<div>" + cmdsplit[0] + " is not a command</div>");
 }

@@ -1,30 +1,26 @@
-var commands = [
-				{
-					"name": "help",
+var commands = {
+				"help": {
 					"func": function() {
 						print("For all commands, there is no need for (\") as whitespace is ignored")
-						for (var i = 0; i < commands.length; i++) {
-							print(commands[i].name + ": " + commands[i].help);
+						for (var key in commands) {
+							print(key + ": " + commands[key].help);
 						}
 					},
 					"help": "Displays all commands and how to use"
 				},
-				{
-					"name": "echo",
+				"echo": {
 					"func": function(out) {
 						print(out.join("&nbsp;"));
 					},
 					"help": "Print something"
 				},
-				{
-					"name": "clear",
+				"clear": {
 					"func": function() {
 						maintable.innerHTML = "";
 					},
 					"help": "Clear the screen"
 				},
-				{
-					"name": "js",
+				"js": {
 					"func": function(s) {
 						s = s.join(" ").trim()
 						if (s.length == 0) {print("No text specified as parameter");return}
@@ -36,8 +32,7 @@ var commands = [
 					},
 					"help": "Run a JS string"
 				},
-				{
-					"name": "load",
+				"load": {
 					"func": function(s) {
 						s = s.join(" ").trim()
 						var script = document.createElement("script");
@@ -47,16 +42,14 @@ var commands = [
 					},
 					"help": "Load remote javascript file"
 				},
-				{
-					"name": "colour",
+				"colour": {
 					"func": function(s) {
 						s = s.join(" ").trim()
 						maintable.style.color = s;
 					},
 					"help": "Change the colour of the text in the console"
 				},
-				{
-					"name": "su",
+				"su": {
 					"func": function(e) {
 						var line = (function(params) {var temp = []; params.forEach(function(e,i){if (e.length != 0) temp.push(e)});return temp})(e);
 						if (!(line[0] && line[1])) return;
@@ -70,8 +63,7 @@ var commands = [
 					},
 					"help": "Log in to an account: su [user] [pass]"
 				},
-				{
-					"name": "youtube",
+				"youtube": {
 					"func": function(e) {
 						var line = (function(params) {var temp = []; params.forEach(function(e,i){if (e.length != 0) temp.push(e)});return temp})(e);
 						var params = null;
@@ -186,4 +178,4 @@ var commands = [
 					},
 					"help": "Youtube controls; use `youtube help` for specific commands"
 				}
-			];
+};
