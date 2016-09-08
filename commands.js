@@ -12,7 +12,9 @@ var commands = {
 				},
 				"echo": {
 					"func": function(out) {
-						print(out.join("&nbsp;"));
+						var node = document.createElement('div');
+						node.appendChild(document.createTextNode(out.join(" ")));
+						print(node.innerHTML);
 					},
 					"help": "Print something"
 				},
