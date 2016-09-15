@@ -38,6 +38,12 @@ function processCmds(cmd) {
 	if (commands[cmdsplit[0]]) {
 		return commands[cmdsplit[0]].func(cmdsplit.splice(1));
 	}
+	if (plugins[cmdsplit[0]]) {
+		return plugins[cmdsplit[0]].func(cmdsplit.splice(1));
+	}
+	if (allusers[username].userfunc[cmdsplit[0]]) {
+		return allusers[username].userfunc[cmdsplit[0]].func(cmdsplit.splice(1));
+	}
 	print(cmd.split(" ")[0] + " is not a command");
 }
 
@@ -98,6 +104,7 @@ var currenttext;
 var username = "user";
 var youtubeplayer = null; //Used for the youtube player
 var blankline = " "//Alt 255 for blank line
+var plugins = {}; //Used for later
 window.onload = function() {
 	maintable = document.createElement("div");
 	document.body.appendChild(maintable);

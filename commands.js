@@ -1,11 +1,24 @@
-var commands = {
+const commands = {
 				"help": {
 					"func": function() {
 						print("For all commands, there is no need for (\") as whitespace is ignored");
 						print("Press Esc to bring up a newline if something breaks or you want to cancel the last operation");
 						print(blankline);
+						print("//Built-in//");
 						for (var key in commands) {
 							print(key + ": " + commands[key].help);
+						}
+						if (Object.keys(plugins).length > 0) {
+							print("//Plugins//")
+							for (var key in plugins) {
+								print(key + ": " + plugins[key].help);
+							}
+						}
+						if (allusers[username].userfunc) {
+							print("//User-specific: " + username + "//");
+							for (var key in allusers[username].userfunc) {
+								print(key + ": " + allusers[username].userfunc[key].help);
+							}
 						}
 					},
 					"help": "Displays all commands and how to use"

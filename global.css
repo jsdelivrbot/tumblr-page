@@ -21,3 +21,10 @@ body {
 	white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
 	white-space: normal;
 }
+::-moz-selection {
+  color: black; background: white;
+}
+
+::selection {
+  color: black; background: white;
+} 
