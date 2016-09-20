@@ -101,6 +101,12 @@ window.onkeyup = function(e) {
 	}
 }
 
+window.onresize = function() {
+	for(var e in borders){
+		borders[e].children[0].innerHTML = addToBorder();
+	};
+}
+
 function addToBorder() {
 	return "** " + (function () {var temp = ""; for(var i = 0, width = window.innerWidth/50; i < width; i++) temp+="+ ";return temp})() + " **";
 }
