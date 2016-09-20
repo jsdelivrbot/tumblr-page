@@ -5,6 +5,7 @@ body {
 	background-color: #1a1a1a;
 	color: #eee;
 	font-family: Monospace;
+	font-size:16px;
 	height:100%;
 	cursor: text;
 }
@@ -20,6 +21,31 @@ body {
 	word-break: break-all;
 	white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
 	white-space: normal;
+}
+.maintable {
+	position:relative;
+	top:15;
+	padding-bottom:20;
+}
+.borderContain {
+	position: fixed;
+	width:100%;
+	background:#1a1a1a;
+	z-index:5;
+}
+.border {
+	text-align: justify;
+}
+.border:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+}
+.top {
+	top:0;
+}
+.bottom {
+	bottom:0;
 }
 ::-moz-selection {
   color: black; background: white;

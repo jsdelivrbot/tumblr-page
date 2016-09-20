@@ -12,6 +12,7 @@ function generateLine() {
 		}
 		e.preventDefault();
 	}
+	document.body.scrollTop = document.body.scrollHeight;
 	currenttext.focus();
 }
 
@@ -41,8 +42,10 @@ function processCmds(cmd) {
 	if (plugins[cmdsplit[0]]) {
 		return plugins[cmdsplit[0]].func(cmdsplit.splice(1));
 	}
-	if (allusers[username].userfunc[cmdsplit[0]]) {
-		return allusers[username].userfunc[cmdsplit[0]].func(cmdsplit.splice(1));
+	if (allusers[username].userfunc) {
+		if (allusers[username].userfunc[cmdsplit[0]]) {
+			return allusers[username].userfunc[cmdsplit[0]].func(cmdsplit.splice(1));
+		}
 	}
 	print(cmd.split(" ")[0] + " is not a command");
 }
@@ -98,15 +101,35 @@ window.onkeyup = function(e) {
 	}
 }
 
+function addToBorder() {
+	return "** " + (function () {var temp = ""; for(var i = 0, width = window.innerWidth/50; i < width; i++) temp+="+ ";return temp})() + " **";
+}
+
+function createBorder() {
+	var borders = {};
+	["top", "bottom"].forEach( function(e, i){
+		var contain = document.createElement("div");
+		contain.className = "borderContain " + e;
+		var border = document.createElement("div");
+		contain.appendChild(border);
+		border.className = "border";
+		border.innerHTML = addToBorder();
+		borders[e] = contain;
+	});
+	return borders;
+}
+
 //Init
 var maintable;
+var borders = createBorder();
 var currenttext;
 var username = "user";
-var youtubeplayer = null; //Used for the youtube player
 var blankline = " "//Alt 255 for blank line
 var plugins = {}; //Used for later
 window.onload = function() {
 	maintable = document.createElement("div");
+	maintable.className = "maintable";
+	for(var key in borders) document.body.appendChild(borders[key]);
 	document.body.appendChild(maintable);
 	print("505e06b2 Firmware [Version: " + SparkMD5.hash((function() {var temp = []; for(var key in commit) temp.push(commit[key]); return temp.join("")})()) + "]");
 	print("Copyright (c) 2016 505e06b2.  All rights reserved.");
