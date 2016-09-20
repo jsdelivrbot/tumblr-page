@@ -1,4 +1,14 @@
 var youtubeplayer = null; //Used for the manipulation of the youtube player
+function initYoutube() {
+	var temp = document.createElement("script");
+	temp.src = "https://www.youtube.com/iframe_api";
+	document.head.appendChild(temp);
+}
+if (document.head) {
+	initYoutube();
+} else {
+	window.onload = initYoutube;
+}
 plugins.youtube = {
 					"func": function(e) {
 						var line = (function(params) {var temp = []; params.forEach(function(e,i){if (e.length != 0) temp.push(e)});return temp})(e);
