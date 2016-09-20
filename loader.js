@@ -10,7 +10,6 @@ function appendScript(src) {
 }
 		
 document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="' + url + commit.global + '/global.css">';
-appendScript(getLink(commit.frontend, "frontend.js"));
-appendScript(getLink(commit.commands, "commands.js"));
-appendScript(getLink(commit.users, "users.js"));
-appendScript(getLink(commit.youtube, "youtube.js"));
+for(var key in commit) {
+	appendScript(getLink(commit[key], key + ".js"));
+}
