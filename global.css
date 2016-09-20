@@ -41,10 +41,10 @@ body {
   display: inline-block;
   width: 100%;
 }
-.top {
+.bordertop {
 	top:0;
 }
-.bottom {
+.borderbottom {
 	bottom:0;
 }
 ::-moz-selection {

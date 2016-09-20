@@ -115,7 +115,7 @@ function createBorder() {
 	var borders = {};
 	["top", "bottom"].forEach( function(e, i){
 		var contain = document.createElement("div");
-		contain.className = "borderContain " + e;
+		contain.className = "borderContain border" + e;
 		var border = document.createElement("div");
 		contain.appendChild(border);
 		border.className = "borderText";
