@@ -32,10 +32,10 @@ body {
 	width:100%;
 	background:#1a1a1a;
 	z-index:5;
-	height:20;
 }
 .borderText {
 	text-align: justify;
+	margin-bottom:-1em !important;
 }
 .borderText:after {
   content: "";
