@@ -30,12 +30,17 @@ body {
 .borderContain {
 	position: fixed;
 	width:100%;
-	background:#1a1a1a;
 	z-index:5;
 }
 .borderText {
 	text-align: justify;
 	margin-bottom:-1em !important;
+	background-color:#1a1a1a;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	cursor:default;
 }
 .borderText:after {
   content: "";
@@ -46,7 +51,7 @@ body {
 	top:0;
 }
 .borderbottom {
-	bottom:0;
+	bottom:15;
 }
 ::-moz-selection {
   color: black; background: white;
