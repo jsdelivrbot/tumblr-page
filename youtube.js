@@ -1,3 +1,4 @@
+var youtubeplayer = null; //Used for the manipulation of the youtube player
 plugins.youtube = {
 					"func": function(e) {
 						var line = (function(params) {var temp = []; params.forEach(function(e,i){if (e.length != 0) temp.push(e)});return temp})(e);
