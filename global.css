@@ -33,10 +33,10 @@ body {
 	background:#1a1a1a;
 	z-index:5;
 }
-.border {
+.borderText {
 	text-align: justify;
 }
-.border:after {
+.borderText:after {
   content: "";
   display: inline-block;
   width: 100%;

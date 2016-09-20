@@ -118,7 +118,7 @@ function createBorder() {
 		contain.className = "borderContain " + e;
 		var border = document.createElement("div");
 		contain.appendChild(border);
-		border.className = "border";
+		border.className = "borderText";
 		border.innerHTML = addToBorder();
 		borders[e] = contain;
 	});
