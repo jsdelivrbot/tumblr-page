@@ -7,29 +7,13 @@
 	<link rel="icon" type="image/png" href="{Favicon}" />
 	<script>
 		var commit = {
-			"frontend": "master",
-			"global": "master",
-			"commands": "master",
-			"users": "master",
-			"youtube": "master"
+			"frontend": "278718d53928f10f8ee427bbd01ca35b24f2a23f",
+			"global": "3887812a9f281704d7400273f39232cdd9a423af",
+			"commands": "94fdfd214c18feb422ce881cf162aed6c582c0a4",
+			"users": "94fdfd214c18feb422ce881cf162aed6c582c0a4",
+			"youtube": "fb2d5975498e214263e22b5f166821879abd3996"
 		}
-	
-		var url = "https://cdn.rawgit.com/505e06b2/tumblr-page/";
-		function getLink(commit, file) {
-			return url + commit + "/" + file;
-		}
-		
-		function appendScript(src) {
-			var temp = document.createElement("script");
-			temp.src = src;
-			document.head.appendChild(temp);
-		}
-		
-		document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="' + url + commit.global + '/global.css">';
-		appendScript(getLink(commit.frontend, "frontend.js"));
-		appendScript(getLink(commit.commands, "commands.js"));
-		appendScript(getLink(commit.users, "users.js"));
-		appendScript(getLink(commit.youtube, "youtube.js"));
 	</script>
+	<script src="https://cdn.rawgit.com/505e06b2/tumblr-page/8b61030a7ea60893aae7c2b89b4f752459ed597d/loader.js"></script>
 </head>
 </html>

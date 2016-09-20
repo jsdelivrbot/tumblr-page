@@ -31,27 +31,20 @@ body {
 	position: fixed;
 	width:100%;
 	z-index:5;
-}
-.borderText {
-	text-align: justify;
-	margin-bottom:-1em !important;
+	
 	background-color:#1a1a1a;
 	user-select: none;
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	cursor:default;
-}
-.borderText:after {
-  content: "";
-  display: inline-block;
-  width: 100%;
+	text-align:center;
 }
 .bordertop {
 	top:0;
 }
 .borderbottom {
-	bottom:15;
+	bottom:0;
 }
 ::-moz-selection {
   color: black; background: white;

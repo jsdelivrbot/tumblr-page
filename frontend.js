@@ -103,12 +103,12 @@ window.onkeyup = function(e) {
 
 window.onresize = function() {
 	for(var e in borders){
-		borders[e].children[0].innerHTML = addToBorder();
+		borders[e].innerHTML = addToBorder();
 	};
 }
 
 function addToBorder() {
-	return "** " + (function () {var temp = ""; for(var i = 0, width = window.innerWidth/50; i < width; i++) temp+="+ ";return temp})() + " **";
+	return "** " + (function () {var temp = ""; for(var i = 0, width = window.innerWidth/50; i < width; i++) temp+="<span class='borderText'>+&nbsp;&nbsp;</span>";return temp})() + " **";
 }
 
 function createBorder() {
@@ -116,10 +116,7 @@ function createBorder() {
 	["top", "bottom"].forEach( function(e, i){
 		var contain = document.createElement("div");
 		contain.className = "borderContain border" + e;
-		var border = document.createElement("div");
-		contain.appendChild(border);
-		border.className = "borderText";
-		border.innerHTML = addToBorder();
+		contain.innerHTML = addToBorder();
 		borders[e] = contain;
 	});
 	return borders;
@@ -134,7 +131,7 @@ var blankline = " "//Alt 255 for blank line
 var plugins = {}; //Used for later
 window.onload = function() {
 	maintable = document.createElement("div");
-	maintable.className = "maintable";
+	maintable.className = "maintable textin";
 	for(var key in borders) document.body.appendChild(borders[key]);
 	document.body.appendChild(maintable);
 	print("505e06b2 Firmware [Version: " + SparkMD5.hash((function() {var temp = []; for(var key in commit) temp.push(commit[key]); return temp.join("")})()) + "]");
