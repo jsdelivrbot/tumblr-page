@@ -80,5 +80,12 @@ const commands = {
 						}
 					},
 					"help": "Log in to an account: su [user] [pass]"
+				},
+				"md5": {
+					"func": function(e) {
+						e = e.join(" ").trim();
+						print(SparkMD5.hash(e));
+					},
+					"help": "MD5 hash a value"
 				}
 };
